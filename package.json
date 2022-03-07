@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "prepare": "husky install",
-    "start": "node src"
+    "start": "node src",
+    "test": "jest --passWithNoTests",
+    "test-watch": "jest --watchAll"
   },
   "keywords": [],
   "author": "",
