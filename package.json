@@ -6,7 +6,7 @@
   "scripts": {
     "prepare": "husky install",
     "start": "node src",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "test-watch": "jest --watchAll"
   },
   "keywords": [],
