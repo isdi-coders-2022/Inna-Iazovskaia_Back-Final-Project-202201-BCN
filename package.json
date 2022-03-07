@@ -36,7 +36,8 @@
       "!src/index.js",
       "!src/server/uppServer.js",
       "!src/database/index.js",
-      "!src/**/*.test.js"
+      "!src/**/*.test.js",
+      "!src/server/index.js"
     ]
   }
 }
