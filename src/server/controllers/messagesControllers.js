@@ -5,4 +5,4 @@ const getAllMessages = async (req, res) => {
   res.json({ messages });
 };
 
-module.exports = getAllMessages;
+module.exports = { getAllMessages };
