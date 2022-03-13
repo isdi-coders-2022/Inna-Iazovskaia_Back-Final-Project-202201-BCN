@@ -21,4 +21,22 @@ const deleteMessage = async (req, res, next) => {
     next(error);
   }
 };
-module.exports = { getAllMessages, deleteMessage };
+
+const createMessage = async (req, res, next) => {
+  try {
+    const createdMessage = await Message.create(req.body);
+    if (createdMessage) {
+      res.json(createdMessage);
+    } else {
+      const error = new Error("Invalid data format");
+      error.code = 400;
+      next(error);
+    }
+  } catch (error) {
+    error.code = 500;
+    error.message = "Couldn't create message";
+    next(error);
+  }
+};
+
+module.exports = { getAllMessages, deleteMessage, createMessage };
