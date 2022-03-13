@@ -53,3 +53,33 @@ describe("Given a /messages/delete endpoint", () => {
     });
   });
 });
+
+describe("Given a /messages/create endpoint", () => {
+  describe("When it receives POST request with a message", () => {
+    test("Then it should respond with 201 status code and the message", async () => {
+      const newMessage = {
+        text: "I am fine",
+      };
+      const { body } = await request(app)
+        .post("/messages/create")
+        .send(newMessage)
+        .expect(200);
+
+      expect(body.text).toBe(newMessage.text);
+    });
+  });
+
+  describe("When it receives POST request with invalid data", () => {
+    test("Then it should respond with 500 code", async () => {
+      const newMessage = "";
+      const expectedErrorMessage = "Couldn't create message";
+
+      const { body } = await request(app)
+        .post("/messages/create")
+        .send(newMessage)
+        .expect(500);
+
+      expect(body.message).toBe(expectedErrorMessage);
+    });
+  });
+});
