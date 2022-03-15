@@ -39,7 +39,7 @@ describe("Given a /messages/all/ endpoint", () => {
   });
 });
 
-describe("Given a /messages/delete endpoint", () => {
+describe("Given a /messages/delete/:id endpoint", () => {
   describe("When it receives DELETE request with existing message id", () => {
     test("Then it should respond with 200 status code and deleted message", async () => {
       const messageToDalete = await Message.findOne();
@@ -80,6 +80,21 @@ describe("Given a /messages/create endpoint", () => {
         .expect(500);
 
       expect(body.message).toBe(expectedErrorMessage);
+    });
+  });
+});
+
+describe("Given a /messages/update/:id endpoint", () => {
+  describe("When it receives PUT request with existing message id", () => {
+    test("Then it should respond with 201 status code and updated message", async () => {
+      const messageToUpdate = await Message.findOne();
+
+      const { body } = await request(app)
+        .put(`/messages/update/${messageToUpdate.id}`)
+        .send(messageToUpdate)
+        .expect(201);
+
+      expect(body.text).toEqual(messageToUpdate.text);
     });
   });
 });
