@@ -39,4 +39,28 @@ const createMessage = async (req, res, next) => {
   }
 };
 
-module.exports = { getAllMessages, deleteMessage, createMessage };
+const updateMessage = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const messageToUpdate = req.body;
+    const updatedMessage = await Message.findByIdAndUpdate(id, messageToUpdate);
+    if (messageToUpdate) {
+      res.status(201).json(updatedMessage);
+    } else {
+      const error = new Error("Message not found");
+      error.code = 404;
+      next(error);
+    }
+  } catch (error) {
+    error.code = 500;
+    error.message = "Couldn't update message";
+    next(error);
+  }
+};
+
+module.exports = {
+  getAllMessages,
+  deleteMessage,
+  createMessage,
+  updateMessage,
+};
