@@ -63,7 +63,7 @@ const getMessage = async (req, res, next) => {
     const { id } = req.params;
     const message = await Message.findById(id);
     if (message) {
-      res.json({ message });
+      res.json(message);
     } else {
       const error = new Error("Message not found");
       error.code = 404;
