@@ -1,0 +1,101 @@
+{
+  "info": {
+    "_postman_id": "1077dbb3-6eaa-40a7-bd69-5fc3800bd21c",
+    "name": "Find-me-Inna-Iazovskaia",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "get-all-messages",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://find-me-project.onrender.com/messages/all",
+          "protocol": "https",
+          "host": ["find-me-project", "onrender", "com"],
+          "path": ["messages", "all"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "delete-message",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://find-me-project.onrender.com/messages/delete/622f023d43db6f4868393596",
+          "protocol": "https",
+          "host": ["find-me-project", "onrender", "com"],
+          "path": ["messages", "delete", "622f023d43db6f4868393596"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "create-message-localhost",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "create-message",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "const message = {\r\n        text: \"I am fine.\",\r\n      };",
+          "options": {
+            "raw": {
+              "language": "javascript"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://find-me-project.onrender.com/messages/create",
+          "protocol": "https",
+          "host": ["find-me-project", "onrender", "com"],
+          "path": ["messages", "create"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "New Request",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"text\": \"I am fine\",\r\n    \"date\": \"2022-03-15T10:31:18.697Z\",\r\n    \"id\": \"622e52a9824c0a932882ca85\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/messages/update/622e52a9824c0a932882ca85",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["messages", "update", "622e52a9824c0a932882ca85"]
+        }
+      },
+      "response": []
+    }
+  ]
+}

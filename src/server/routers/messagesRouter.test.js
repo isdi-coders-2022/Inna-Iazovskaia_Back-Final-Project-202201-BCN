@@ -72,7 +72,7 @@ describe("Given a /messages/create endpoint", () => {
   describe("When it receives POST request with invalid data", () => {
     test("Then it should respond with 500 code", async () => {
       const newMessage = "";
-      const expectedErrorMessage = "Couldn't create message";
+      const expectedErrorMessage = "Internal server error";
 
       const { body } = await request(app)
         .post("/messages/create")
