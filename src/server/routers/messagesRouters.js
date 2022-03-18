@@ -5,6 +5,7 @@ const {
   deleteMessage,
   createMessage,
   updateMessage,
+  getMessage,
 } = require("../controllers/messagesControllers/messagesControllers");
 const messageValidation = require("../controllers/messageValidation");
 
@@ -14,5 +15,6 @@ router.get("/all", getAllMessages);
 router.delete("/delete/:id", deleteMessage);
 router.post("/create", validate(messageValidation), createMessage);
 router.put("/update/:id", updateMessage);
+router.get("/:id", getMessage);
 
 module.exports = router;
