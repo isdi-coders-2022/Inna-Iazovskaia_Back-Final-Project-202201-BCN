@@ -5,7 +5,7 @@ const {
   deleteMessage,
   createMessage,
   updateMessage,
-} = require("../controllers/messagesControllers");
+} = require("../controllers/messagesControllers/messagesControllers");
 const messageValidation = require("../controllers/messageValidation");
 
 const router = express.Router();

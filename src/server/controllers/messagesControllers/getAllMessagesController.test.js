@@ -1,4 +1,4 @@
-const Message = require("../../database/models/Message");
+const Message = require("../../../database/models/Message");
 const { getAllMessages } = require("./messagesControllers");
 
 describe("Given a getAllMessages controller", () => {
