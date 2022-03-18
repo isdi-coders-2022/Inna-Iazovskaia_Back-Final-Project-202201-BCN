@@ -21,7 +21,7 @@ describe("Given a getMessage controller", () => {
 
       await getMessage(req, res, null);
 
-      expect(res.json).toHaveBeenCalledWith({ message });
+      expect(res.json).toHaveBeenCalledWith(message);
     });
   });
 
