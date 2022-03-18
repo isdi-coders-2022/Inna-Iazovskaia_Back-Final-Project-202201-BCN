@@ -1,4 +1,4 @@
-const User = require("../../database/models/User");
+const User = require("../../../database/models/User");
 const getAllUsers = require("./usersControllers");
 
 describe("Given a getAllUsers controller", () => {
