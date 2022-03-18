@@ -1,4 +1,4 @@
-const Message = require("../../database/models/Message");
+const Message = require("../../../database/models/Message");
 const { deleteMessage } = require("./messagesControllers");
 
 describe("Given a deleteMessage controller", () => {

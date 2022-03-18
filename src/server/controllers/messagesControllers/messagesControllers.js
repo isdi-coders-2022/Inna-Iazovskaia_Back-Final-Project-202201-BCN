@@ -1,4 +1,4 @@
-const Message = require("../../database/models/Message");
+const Message = require("../../../database/models/Message");
 
 const getAllMessages = async (req, res) => {
   const messages = await Message.find();
@@ -58,9 +58,26 @@ const updateMessage = async (req, res, next) => {
   }
 };
 
+const getMessage = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const message = await Message.findById(id);
+    if (message) {
+      res.json({ message });
+    } else {
+      const error = new Error("Message not found");
+      error.code = 404;
+      next(error);
+    }
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   getAllMessages,
   deleteMessage,
   createMessage,
   updateMessage,
+  getMessage,
 };
