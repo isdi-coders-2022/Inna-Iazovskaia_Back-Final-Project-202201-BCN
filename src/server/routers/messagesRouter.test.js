@@ -98,3 +98,34 @@ describe("Given a /messages/update/:id endpoint", () => {
     });
   });
 });
+
+describe("Given a /messages/:id endpoint", () => {
+  describe("When it receives GET request with id of existing message", () => {
+    test("Then it should respond with 200 status code and the message", async () => {
+      const message = await Message.findOne();
+
+      const { body } = await request(app)
+        .get(`/messages/${message.id}`)
+        .send(message)
+        .expect(200);
+
+      expect(body.text).toEqual(message.text);
+    });
+  });
+
+  describe("When it receives GET request with id of not existing message", () => {
+    test("Then it should respond with 500 status code and error", async () => {
+      const message = {
+        text: "Hello",
+        id: "5",
+      };
+
+      const { body } = await request(app)
+        .get(`/messages/${message.id}`)
+        .send(message)
+        .expect(500);
+
+      expect(body).toHaveProperty("error");
+    });
+  });
+});
