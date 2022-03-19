@@ -4,8 +4,8 @@ const messageValidation = {
   body: Joi.object({
     date: Joi.date().default(new Date()),
     text: Joi.string().required(),
-    sender: Joi.array(),
-    recipient: Joi.array(),
+    sender: Joi.string,
+    recipient: Joi.string,
   }),
 };
 
