@@ -23,13 +23,14 @@ const deleteMessage = async (req, res, next) => {
 };
 
 const createMessage = async (req, res, next) => {
+  const message = req.body;
   try {
-    const createdMessage = await Message.create(req.body);
-    if (createdMessage) {
+    const createdMessage = await Message.create(message);
+    if (createMessage) {
       res.json(createdMessage);
     } else {
-      const error = new Error("Invalid data format");
-      error.code = 400;
+      const error = new Error("Message not found");
+      error.code = 404;
       next(error);
     }
   } catch (error) {
