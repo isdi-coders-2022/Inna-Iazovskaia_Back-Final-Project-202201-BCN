@@ -32,7 +32,7 @@ describe("Given a createMessage controller", () => {
         body: newMessage,
       };
       const next = jest.fn();
-      const error = new Error("Invalid data format");
+      const error = new Error("Couldn't create message");
 
       Message.create = jest.fn().mockResolvedValue(null);
 
@@ -43,18 +43,20 @@ describe("Given a createMessage controller", () => {
   });
 
   describe("When it receives a request and database isn't connected", () => {
-    test("Then it should call next method with an error: 'Couldn't create message", async () => {
-      const next = jest.fn();
-      const req = {
-        body: { text: "Hello!!!" },
+    test("Then it should call the response next method with an error", async () => {
+      const newMessage = {
+        text: "Hello!!!",
       };
-      const error = new Error("Couldn't create message");
+      const req = {
+        body: newMessage,
+      };
+      const next = jest.fn();
 
-      Message.create = jest.fn().mockRejectedValue(error);
+      Message.create = jest.fn().mockResolvedValue(null);
 
       await createMessage(req, null, next);
 
-      expect(next).toHaveBeenCalledWith(error);
+      expect(next).toHaveBeenCalled();
     });
   });
 });
