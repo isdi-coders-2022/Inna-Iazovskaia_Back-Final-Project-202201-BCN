@@ -1,9 +1,9 @@
 const { MongoMemoryServer } = require("mongodb-memory-server");
 const { default: mongoose } = require("mongoose");
 const request = require("supertest");
-const connectDatabase = require("../../database");
-const Message = require("../../database/models/Message");
-const app = require("../index");
+const connectDatabase = require("../../../database");
+const Message = require("../../../database/models/Message");
+const app = require("../../index");
 
 let mongo;
 
