@@ -6,6 +6,7 @@ describe("Given a createMessage controller", () => {
     test("Then it should call method json with received message", async () => {
       const newMessage = {
         text: "Hello!!!",
+        sender: "Tom",
       };
       const req = {
         body: newMessage,
