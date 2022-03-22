@@ -26,11 +26,11 @@ const createMessage = async (req, res, next) => {
   const message = req.body;
   try {
     const createdMessage = await Message.create(message);
-    if (createMessage) {
+    if (createdMessage) {
       res.json(createdMessage);
     } else {
-      const error = new Error("Message not found");
-      error.code = 404;
+      const error = new Error("Invalid data format");
+      error.code = 400;
       next(error);
     }
   } catch (error) {
@@ -46,7 +46,7 @@ const updateMessage = async (req, res, next) => {
     const messageToUpdate = req.body;
     const updatedMessage = await Message.findByIdAndUpdate(id, messageToUpdate);
     if (messageToUpdate) {
-      res.status(201).json(updatedMessage);
+      res.status(200).json(updatedMessage);
     } else {
       const error = new Error("Message not found");
       error.code = 404;

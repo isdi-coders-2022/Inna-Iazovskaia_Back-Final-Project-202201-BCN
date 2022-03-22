@@ -6,6 +6,7 @@ describe("Given a createMessage controller", () => {
     test("Then it should call method json with received message", async () => {
       const newMessage = {
         text: "Hello!!!",
+        sender: "Tom",
       };
       const req = {
         body: newMessage,
@@ -23,6 +24,25 @@ describe("Given a createMessage controller", () => {
     });
   });
 
+  describe("When it receives request with invalid data format", () => {
+    test("Then it should call next with error 'Invalid data format'", async () => {
+      const newMessage = {
+        text: "Hello!!!",
+      };
+      const req = {
+        body: newMessage,
+      };
+      const next = jest.fn();
+      const error = new Error("Invalid data format");
+
+      Message.create = jest.fn().mockResolvedValue(undefined);
+
+      await createMessage(req, null, next);
+
+      expect(next).toHaveBeenCalledWith(error);
+    });
+  });
+
   describe("When it receives request with invalid format of data", () => {
     test("Then it should call next with error 'Invalid data format'", async () => {
       const newMessage = {
@@ -34,7 +54,7 @@ describe("Given a createMessage controller", () => {
       const next = jest.fn();
       const error = new Error("Couldn't create message");
 
-      Message.create = jest.fn().mockResolvedValue(null);
+      Message.create = jest.fn().mockRejectedValue(error);
 
       await createMessage(req, null, next);
 

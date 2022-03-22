@@ -92,7 +92,7 @@ describe("Given a /messages/update/:id endpoint", () => {
       const { body } = await request(app)
         .put(`/messages/update/${messageToUpdate.id}`)
         .send(messageToUpdate)
-        .expect(201);
+        .expect(200);
 
       expect(body.text).toEqual(messageToUpdate.text);
     });
