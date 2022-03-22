@@ -10,12 +10,10 @@ const MessageSchema = new Schema({
     required: true,
   },
   sender: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
+    type: String,
   },
   recipient: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
+    type: String,
   },
 });
 
